@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMovieRequest;
+use App\Models\Movie;
 
 class MovieController extends Controller
 {
@@ -47,7 +48,13 @@ class MovieController extends Controller
         $smallThumbnail->storeAs('public/thumbnail', $originalSmallThumbnailName);
         $largeThumbnail->storeAs('public/thumbnail', $originalLargeThumbnailName);
 
-        // dd($originalLargeThumbnailName);
-        dd($originalSmallThumbnailName);
+        $data['small_thumbnail'] = $originalSmallThumbnailName;
+        $data['large_thumbnail'] = $originalLargeThumbnailName;
+
+        // dd($data);
+        Movie::create($data);
+
+        return redirect()->route('admin.movie.index')->with('success', 'Movie Created');
+
     }
 }

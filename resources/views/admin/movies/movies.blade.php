@@ -2,6 +2,13 @@
 
 @section('title', 'Movies')
 @section('content')
+
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
     <div class="row">
     <div class="col-md-12">
       <div class="card card-primary">
@@ -11,7 +18,7 @@
         
         <div class="card-body">
           <div class="row">
-            <div class="col-md-12">
+            <div class="mb-3 col-md-12">
               <a href="{{ route('admin.movie.create') }}" class="btn btn-warning">Create Movie</a>
             </div>
           </div>
