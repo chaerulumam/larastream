@@ -25,7 +25,7 @@
 
           <div class="row">
             <div class="col-md-12">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="movie" class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <th>Id</th>
@@ -37,14 +37,25 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                  @foreach ($movie as $item)
+                      <tr>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $item->title }}</td>
+                      <td>
+                        <img src="{{ asset('storage/thumbnail/'.$item->small_thumbnail) }}" alt="{{ $item->title }}" width="20%">
+                      </td>
+                      <td>{{ $item->categories }}</td>
+                      <td>{{ $item->casts }}</td>
+                      <td>
+                        <div class="d-flex">
+                          <a href="#" class="btn btn-sm btn-success">Edit</a>
+                        <form action="#">
+                          <button class="btn btn-sm btn-danger">Delete</button>
+                        </form>
+                        </div>
+                      </td>
                     </tr>
+                  @endforeach
                 </tbody>
               </table>
             </div>
@@ -53,4 +64,10 @@
       </div>
     </div>
   </div>
+@endsection
+
+@section('js')
+    <script>
+      $("#movie").DataTable()
+    </script>
 @endsection
