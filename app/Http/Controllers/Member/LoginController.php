@@ -3,16 +3,13 @@
 namespace App\Http\Controllers\Member;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
-class LoginRegisterController extends Controller
+class LoginController extends Controller
 {
-    public function register()
-    {
-        return view('member.register');
-    }
-
-    public function login()
+     public function index()
     {
         return view('member.login');
     }
