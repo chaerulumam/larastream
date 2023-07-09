@@ -48,9 +48,11 @@
                       <td>{{ $item->casts }}</td>
                       <td>
                         <div class="d-flex">
-                          <a href="#" class="btn btn-sm btn-success">Edit</a>
-                        <form action="#">
-                          <button class="btn btn-sm btn-danger">Delete</button>
+                        <a href="{{ route('admin.movie.edit', $item->id) }}" class="btn btn-sm btn-success"><i class="fas fa-edit    "></i></a>
+                        <form action="{{ route('admin.movie.delete', $item->id) }}" method="POST">
+                          @method('delete')
+                          @csrf
+                          <button class="btn btn-sm btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
                         </form>
                         </div>
                       </td>
