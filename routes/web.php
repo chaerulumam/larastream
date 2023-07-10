@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Member\RegisterController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Member\DashboardController;
 use App\Http\Controllers\Member\LoginController as MemberLoginController;
 
 /*
@@ -46,4 +47,8 @@ Route::post('register', [RegisterController::class, 'store'])->name('member.regi
 
 Route::get('login', [MemberLoginController::class, 'index'])->name('member.login');
 Route::post('login', [MemberLoginController::class, 'auth'])->name('member.login.auth');
+
+Route::group(['prefix' => 'member'], function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('member.dashboard');
+});
 
