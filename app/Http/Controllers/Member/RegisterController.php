@@ -18,26 +18,26 @@ class RegisterController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             // 'phone_number' => 'required',
         ]);
 
-        $data = $request->except('token');
+        $data = $request->except('_token');
 
-        $isEmailExists = User::where('email', $request->email)->exists();
+        // $isEmailExists = User::where('email', $request->email)->exists();
 
-        if ($isEmailExists) {
-            return back()->withErrors([
-                'error' => 'The email is already exists'
-            ])->withInput();
-        }
+        // if ($isEmailExists) {
+        //     return back()->withErrors([
+        //         'error' => 'The email is already exists'
+        //     ])->withInput();
+        // }
 
         $data['role'] = 'member';
         $data['password'] = Hash::make($request->password);
 
         User::create($data);
 
-        return back();
+        return redirect()->route('member.login');
     }
 }
