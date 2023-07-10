@@ -6,10 +6,11 @@
 
 @section('content')
      <!-- Featured -->
-     @foreach ($movies as $movie)
          <div>
             <div class="font-semibold text-[22px] text-white mb-[18px]">Featured</div>
             <div class="grid grid-cols-2 gap-5 xl:gap-12">
+
+                @foreach ($movies as $movie)
                 <div class="col-span-1 relative overflow-hidden group">
                     <img src="{{ asset(asset('storage/thumbnail/'.$movie->small_thumbnail)) }}" class="object-cover rounded-[30px]" alt="">
                     <div
@@ -25,9 +26,10 @@
                     </div>
                     <a href="dashboard-movie_details.html" class="inset-0 absolute z-50"></a>
                 </div>
+                @endforeach
+                
             </div>
         </div>
-     @endforeach
     <!-- /Featured -->
 
     <!-- Continue Watching -->
