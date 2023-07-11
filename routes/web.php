@@ -48,7 +48,7 @@ Route::post('register', [RegisterController::class, 'store'])->name('member.regi
 
 Route::get('login', [MemberLoginController::class, 'index'])->name('member.login');
 Route::post('login', [MemberLoginController::class, 'auth'])->name('member.login.auth');
-Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.logout.auth');
+Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.logout');
 
 Route::group(['prefix' => 'member', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('member.dashboard');
