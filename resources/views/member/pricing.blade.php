@@ -45,7 +45,10 @@
         <div class="col-span-12 col-start-1 lg:col-start-2 xl:col-start-4">
             <div class="px-5 lg:px-[60px] pt-[30px] relative">
                 <!-- Logo & User Avatar -->
-                <div class=" flex flex-row justify-between items-center relative">
+                @if (auth()->user())
+                    @include('member.layouts.navbar')
+                @endif
+                {{-- <div class=" flex flex-row justify-between items-center relative">
                     <a href="/" class="block">
                         <img src="{{ asset('stream/assets/images/stream.svg') }}" alt="stream" />
                     </a>
@@ -64,7 +67,7 @@
                             <a href="sign_in.html" class="transition-all hover:bg-sky-100 p-4">Sign Out</a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="pt-[85px] flex flex-col items-center gap-5">
                     <p class="text-sky-300 text-base font-semibold">
@@ -79,10 +82,10 @@
                         <!-- Card -->
                         <div class="pricing-card">
                             <p class="text-stream-dark font-medium text-base">
-                                Standard
+                                {{ ucwords($standard_package->name) }}
                             </p>
                             <div class="text-3xl text-stream-dark font-semibold my-1">
-                                Rp 380.000
+                                Rp {{ number_format($standard_package->price) }}
                             </div>
                             <p class="text-sm text-stream-gray">
                                 /bulan
@@ -94,7 +97,7 @@
                                 <!-- benefits -->
                                 <div class="flex items-center justify-between gap-3">
                                     <span class="li-benefits">
-                                        2 Users Limits
+                                        {{ $standard_package->max_users }} Users Limits
                                     </span>
                                     <img src="{{ asset('stream/assets/images/ic_check.svg') }}" alt="stream" />
                                 </div>
@@ -139,10 +142,10 @@
                         <!-- Card -->
                         <div class="pricing-card">
                             <p class="text-stream-dark font-medium text-base">
-                                Gold
+                                {{ ucwords( $gold_package->name) }}
                             </p>
                             <div class="text-3xl text-stream-dark font-semibold my-1">
-                                Rp 699.000
+                                Rp {{ number_format($gold_package->price) }}
                             </div>
                             <p class="text-sm text-stream-gray">
                                 /bulan
@@ -154,7 +157,7 @@
                                 <!-- benefits -->
                                 <div class="flex items-center justify-between gap-3">
                                     <span class="li-benefits">
-                                        7 Users Limits
+                                        {{ $gold_package->max_users }} Users Limits
                                     </span>
                                     <img src="{{ asset('stream/assets/images/ic_check.svg') }}" alt="stream" />
                                 </div>
