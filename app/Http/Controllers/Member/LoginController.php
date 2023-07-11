@@ -28,13 +28,24 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return "success";
+            return redirect()->route('member.dashboard');
 
-            return redirect()->route('/');
+            return redirect()->route('member.login');
         }
 
         return back()->withErrors([
             'credentials' => 'The credentials are not match'
         ])->withInput();
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect()->route('member.login');
     }
 }
