@@ -22,4 +22,13 @@ class SubscriptionController extends Controller
 
         return view('member.subscription', compact('user_premiums'));
     }
+
+    public function destroy($id)
+    {
+        $user_premiums = UserPremium::findOrFail($id);
+
+        $user_premiums->delete();
+
+        return redirect()->route('member.dashboard');
+    }
 }

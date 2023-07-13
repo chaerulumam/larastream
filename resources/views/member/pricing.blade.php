@@ -136,11 +136,11 @@
                                 <input type="hidden" name="package_id" value="{{ $standard_package->id }}">
                                 <button type="submit"
                                 class="mt-10 py-3 block outline outline-1 outline-stream-gray rounded-full text-center">
-                                <span class="text-stream-gray text-base font-normal">
-                                    Subscribe
-                                    Now
-                                </span>
-                            </button>
+                                    <span class="text-stream-gray text-base font-normal">
+                                        Subscribe
+                                        Now
+                                    </span>
+                                </button>
                             </form>
                             
                         </div>
