@@ -46,4 +46,9 @@ class TransactionController extends Controller
 
         return redirect($midtransRedirectUrl);
     }
+
+    public function success()
+    {
+        return view('member.payment-finish');
+    }
 }

@@ -55,6 +55,8 @@ Route::get('logout', [MemberLoginController::class, 'logout'])->name('member.log
 
 Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
 
+Route::get('success', [MemberTransactionController::class, 'success'])->name('success');
+
 Route::group(['prefix' => 'member', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('member.dashboard');
     Route::get('movie/{id}', [MemberMovieController::class, 'show'])->name('member.movie.show');
