@@ -62,7 +62,7 @@
                         class="flex flex-col items-baseline lg:justify-between mt-6 lg:flex-row lg:items-center lg:mt-0">
                         <div class="flex flex-col w-full font-normal lg:w-auto lg:gap-12 lg:items-center lg:flex-row">
                             <a href="#!" class="nav-link-item">Genre</a>
-                            <a href="#!" class="nav-link-item">Featured</a>
+                            <a href="{{ route('member.dashboard') }}" class="nav-link-item">Featured</a>
                             <a href="{{ route('pricing') }}" class="nav-link-item">Pricing</a>
                         </div>
                         <a href="/" class="hidden lg:block -ml-36">
