@@ -58,6 +58,7 @@ Route::get('pricing', [PricingController::class, 'index'])->name('pricing');
 Route::group(['prefix' => 'member', 'middleware' => 'auth'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('member.dashboard');
     Route::get('movie/{id}', [MemberMovieController::class, 'show'])->name('member.movie.show');
+    Route::get('movie/{id}/watch', [MemberMovieController::class, 'watch'])->name('member.movie.watch');
 
     Route::get('subscription', [SubscriptionController::class, 'index'])->name('member.subscription');
     Route::delete('subscription/{id}', [SubscriptionController::class, 'destroy'])->name('member.subscription.destroy');
